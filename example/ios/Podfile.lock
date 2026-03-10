@@ -1,0 +1,34 @@
+PODS:
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+  - unixconn (0.0.1):
+    - Flutter
+  - unixsock_plugin (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - unixconn (from `.symlinks/plugins/unixconn/ios`)
+  - unixsock_plugin (from `.symlinks/plugins/unixsock_plugin/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+  unixconn:
+    :path: ".symlinks/plugins/unixconn/ios"
+  unixsock_plugin:
+    :path: ".symlinks/plugins/unixsock_plugin/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
+  unixconn: f0ad588b823cd51df267b2034e8c79b094dab99d
+  unixsock_plugin: 6da594740961a222b6ca162594057e5ae5086596
+
+PODFILE CHECKSUM: a0ddd612ba891581689663092440dd0735d3c5ca
+
+COCOAPODS: 1.16.2

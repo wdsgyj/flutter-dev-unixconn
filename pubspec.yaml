@@ -1,0 +1,33 @@
+name: unixconn
+description: "A Flutter FFI plugin that starts a Go unix proxy and connects HttpClient through unix sockets."
+version: 0.0.1
+homepage:
+publish_to: none
+
+environment:
+  sdk: ^3.5.4
+  flutter: '>=3.3.0'
+
+dependencies:
+  ffi: ^2.1.3
+  flutter:
+    sdk: flutter
+  unixsock_plugin:
+    git:
+      url: https://github.com/wdsgyj/unixsock.git
+      ref: 50e464d1d0e3
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        ffiPlugin: true
+      ios:
+        ffiPlugin: true
+      macos:
+        ffiPlugin: true
