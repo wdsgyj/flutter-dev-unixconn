@@ -7,6 +7,8 @@ INCLUDE_DIR="$GO_DIR/include"
 APPLE_TMP="$ROOT/.cache/apple"
 ANDROID_NDK_HOME="${ANDROID_NDK_HOME:-}"
 GOCACHE="${GOCACHE:-/tmp/gocache}"
+# Shrink Android c-shared outputs without dropping the exported C ABI symbols.
+GO_ANDROID_LDFLAGS='-s -w -buildid='
 
 if [[ -z "$ANDROID_NDK_HOME" && -d "$HOME/Library/Android/sdk/ndk/29.0.14206865" ]]; then
   ANDROID_NDK_HOME="$HOME/Library/Android/sdk/ndk/29.0.14206865"
@@ -55,6 +57,8 @@ build_android_shared() {
   local abi="$1"
   local goarch="$2"
   local compiler="$3"
+  local output="$ROOT/android/src/main/jniLibs/$abi/libunixconn_proxy.so"
+  local toolchain="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/darwin-x86_64/bin"
   mkdir -p "$ROOT/android/src/main/jniLibs/$abi"
   if [[ "$goarch" == "arm" ]]; then
     CGO_ENABLED=1 \
@@ -62,16 +66,22 @@ build_android_shared() {
     GOOS=android \
     GOARCH="$goarch" \
     GOARM=7 \
-    CC="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/darwin-x86_64/bin/$compiler" \
-    go build -C "$GO_DIR" -buildmode=c-shared -trimpath -o "$ROOT/android/src/main/jniLibs/$abi/libunixconn_proxy.so" .
+    CC="$toolchain/$compiler" \
+    go build -C "$GO_DIR" -buildmode=c-shared -trimpath \
+      -ldflags "$GO_ANDROID_LDFLAGS" \
+      -o "$output" .
+    "$toolchain/llvm-strip" --strip-debug "$output"
     return
   fi
   CGO_ENABLED=1 \
   GOCACHE="$GOCACHE" \
   GOOS=android \
   GOARCH="$goarch" \
-  CC="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/darwin-x86_64/bin/$compiler" \
-  go build -C "$GO_DIR" -buildmode=c-shared -trimpath -o "$ROOT/android/src/main/jniLibs/$abi/libunixconn_proxy.so" .
+  CC="$toolchain/$compiler" \
+  go build -C "$GO_DIR" -buildmode=c-shared -trimpath \
+    -ldflags "$GO_ANDROID_LDFLAGS" \
+    -o "$output" .
+  "$toolchain/llvm-strip" --strip-debug "$output"
 }
 
 build_macos_archive arm64
