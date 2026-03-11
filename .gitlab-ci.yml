@@ -1,0 +1,4 @@
+include:
+  - project: 'AppTool/cfci'
+    file: '/script/gitlab_ci.yml'
+    ref: 'main'

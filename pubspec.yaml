@@ -1,8 +1,8 @@
 name: unixconn
 description: "A Flutter FFI plugin that starts a Go unix proxy and connects HttpClient through unix sockets."
-version: 0.0.1
-homepage:
-publish_to: none
+version: 1.0.0
+homepage: "https://pub.codeffect.top"
+publish_to: "https://pub.codeffect.top"
 
 environment:
   sdk: ^3.5.4
@@ -13,9 +13,9 @@ dependencies:
   flutter:
     sdk: flutter
   unixsock_plugin:
-    git:
-      url: https://github.com/wdsgyj/unixsock.git
-      ref: 50e464d1d0e3
+    hosted:
+      url: https://pub.codeffect.top
+    version: 1.0.1
 
 dev_dependencies:
   flutter_lints: ^4.0.0
