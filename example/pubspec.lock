@@ -257,12 +257,11 @@ packages:
   unixsock_plugin:
     dependency: transitive
     description:
-      path: "."
-      ref: "50e464d1d0e3"
-      resolved-ref: "50e464d1d0e32131440634cb81c0ea3f9e7688cd"
-      url: "https://github.com/wdsgyj/unixsock.git"
-    source: git
-    version: "0.0.1"
+      name: unixsock_plugin
+      sha256: e3a192b1f7627c7e4aacd6540f6af45765c65baa007fc467db8c907fd3fca2a2
+      url: "https://pub.codeffect.top"
+    source: hosted
+    version: "1.0.1"
   vector_math:
     dependency: transitive
     description:
