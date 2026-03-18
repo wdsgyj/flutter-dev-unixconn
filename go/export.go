@@ -9,7 +9,10 @@ import "C"
 
 import (
 	"encoding/json"
+	"os/signal"
 	"strings"
+	"sync"
+	"syscall"
 	"time"
 	"unsafe"
 
@@ -24,9 +27,15 @@ const (
 )
 
 var manager = proxy.NewManager()
+var initOnce = sync.Once{}
 
 //export unixconn_start_proxy
 func unixconn_start_proxy(socketPath *C.char, timeoutMs C.int32_t, dartPort C.int64_t, errorCode *C.int32_t, errorMessage **C.char) C.int64_t {
+	initOnce.Do(func() {
+		// 避免 iOS 上的 socket EPIPE 错误导致进程退出
+		signal.Ignore(syscall.SIGPIPE)
+	})
+
 	path := C.GoString(socketPath)
 	if path == "" {
 		setError(errorCode, errorMessage, errorInvalidArgument, "socket path is required")
