@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	unixproxy "unixproxy-go"
+	"github.com/wdsgyj/unixproxy-go"
 )
 
 type Options struct {

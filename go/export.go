@@ -17,7 +17,8 @@ import (
 	"unsafe"
 
 	"unixconn/native/proxy"
-	unixproxy "unixproxy-go"
+
+	"github.com/wdsgyj/unixproxy-go"
 )
 
 const (

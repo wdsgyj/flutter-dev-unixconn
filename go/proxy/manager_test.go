@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	unixproxy "unixproxy-go"
+	"github.com/wdsgyj/unixproxy-go"
 )
 
 func TestManagerStartAndStop(t *testing.T) {
