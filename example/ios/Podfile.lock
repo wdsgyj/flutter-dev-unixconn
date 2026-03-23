@@ -2,6 +2,16 @@ PODS:
   - Flutter (1.0.0)
   - integration_test (0.0.1):
     - Flutter
+  - MMKV (2.4.0):
+    - MMKVCore (~> 2.4.0)
+  - mmkv_ios (2.4.0):
+    - Flutter
+    - FlutterMacOS
+    - MMKV (< 2.5, >= 2.4.0)
+  - MMKVCore (2.4.0)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - unixconn (0.0.1):
     - Flutter
   - unixsock_plugin (0.0.1):
@@ -10,25 +20,40 @@ PODS:
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - mmkv_ios (from `.symlinks/plugins/mmkv_ios/darwin`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - unixconn (from `.symlinks/plugins/unixconn/ios`)
   - unixsock_plugin (from `.symlinks/plugins/unixsock_plugin/ios`)
+
+SPEC REPOS:
+  trunk:
+    - MMKV
+    - MMKVCore
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
+  mmkv_ios:
+    :path: ".symlinks/plugins/mmkv_ios/darwin"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
   unixconn:
     :path: ".symlinks/plugins/unixconn/ios"
   unixsock_plugin:
     :path: ".symlinks/plugins/unixsock_plugin/ios"
 
 SPEC CHECKSUMS:
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
+  MMKV: 86859fdfa2b0b21db1fd6e48788474a6416a2c77
+  mmkv_ios: 92c9ad54c630cdd783f8711d082710b3dd1ec5ea
+  MMKVCore: 3d16ce9f7d411e135020915fde98a056859a1efa
+  path_provider_foundation: bb55f6dbba17d0dccd6737fe6f7f34fbd0376880
   unixconn: f0ad588b823cd51df267b2034e8c79b094dab99d
   unixsock_plugin: 6da594740961a222b6ca162594057e5ae5086596
 
-PODFILE CHECKSUM: a0ddd612ba891581689663092440dd0735d3c5ca
+PODFILE CHECKSUM: 7c7643bc8484bcd666fc7cec3d8c2cbbf88bf9cd
 
 COCOAPODS: 1.16.2

@@ -1,6 +1,6 @@
 name: unixconn
 description: "A Flutter FFI plugin that starts a Go unix proxy and connects HttpClient through unix sockets."
-version: 1.0.1
+version: 1.0.2
 homepage: "https://pub.codeffect.top"
 publish_to: "https://pub.codeffect.top"
 
@@ -28,6 +28,8 @@ flutter:
       android:
         ffiPlugin: true
       ios:
+        pluginClass: UnixconnPlugin
         ffiPlugin: true
       macos:
+        pluginClass: UnixconnPlugin
         ffiPlugin: true

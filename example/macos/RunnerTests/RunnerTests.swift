@@ -5,24 +5,27 @@ import XCTest
 
 @testable import unixconn
 
-// This demonstrates a simple unit test of the Swift portion of this plugin's implementation.
-//
-// See https://developer.apple.com/documentation/xctest for more information about using XCTest.
-
 class RunnerTests: XCTestCase {
 
-  func testGetPlatformVersion() {
+  func testPluginReturnsNativeApiAddresses() {
     let plugin = UnixconnPlugin()
+    let call = FlutterMethodCall(methodName: "getNativeApiAddresses", arguments: nil)
+    let expectation = expectation(description: "result block must be called")
 
-    let call = FlutterMethodCall(methodName: "getPlatformVersion", arguments: [])
-
-    let resultExpectation = expectation(description: "result block must be called.")
     plugin.handle(call) { result in
-      XCTAssertEqual(result as! String,
-                     "macOS " + ProcessInfo.processInfo.operatingSystemVersionString)
-      resultExpectation.fulfill()
+      guard let addresses = result as? [String: NSNumber] else {
+        XCTFail("Expected a native API address table")
+        expectation.fulfill()
+        return
+      }
+
+      XCTAssertGreaterThan(addresses["initializeDartApi"]?.uint64Value ?? 0, 0)
+      XCTAssertGreaterThan(addresses["startProxy"]?.uint64Value ?? 0, 0)
+      XCTAssertGreaterThan(addresses["stopProxy"]?.uint64Value ?? 0, 0)
+      XCTAssertGreaterThan(addresses["freeString"]?.uint64Value ?? 0, 0)
+      expectation.fulfill()
     }
+
     waitForExpectations(timeout: 1)
   }
-
 }

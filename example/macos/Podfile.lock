@@ -1,0 +1,47 @@
+PODS:
+  - FlutterMacOS (1.0.0)
+  - MMKV (2.4.0):
+    - MMKVCore (~> 2.4.0)
+  - mmkv_ios (2.4.0):
+    - Flutter
+    - FlutterMacOS
+    - MMKV (< 2.5, >= 2.4.0)
+  - MMKVCore (2.4.0)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - unixconn (0.0.1):
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - mmkv_ios (from `Flutter/ephemeral/.symlinks/plugins/mmkv_ios/darwin`)
+  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
+  - unixconn (from `Flutter/ephemeral/.symlinks/plugins/unixconn/macos`)
+
+SPEC REPOS:
+  trunk:
+    - MMKV
+    - MMKVCore
+
+EXTERNAL SOURCES:
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  mmkv_ios:
+    :path: Flutter/ephemeral/.symlinks/plugins/mmkv_ios/darwin
+  path_provider_foundation:
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
+  unixconn:
+    :path: Flutter/ephemeral/.symlinks/plugins/unixconn/macos
+
+SPEC CHECKSUMS:
+  FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
+  MMKV: 86859fdfa2b0b21db1fd6e48788474a6416a2c77
+  mmkv_ios: 92c9ad54c630cdd783f8711d082710b3dd1ec5ea
+  MMKVCore: 3d16ce9f7d411e135020915fde98a056859a1efa
+  path_provider_foundation: bb55f6dbba17d0dccd6737fe6f7f34fbd0376880
+  unixconn: 4ff888bc09fbf9dbd21bbcac5012f43022a19805
+
+PODFILE CHECKSUM: 9ebaf0ce3d369aaa26a9ea0e159195ed94724cf3
+
+COCOAPODS: 1.16.2

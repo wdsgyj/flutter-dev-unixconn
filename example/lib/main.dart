@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:mmkv/mmkv.dart';
 
-void main() {
-  runApp(const ExampleApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MMKV.initialize();
+  final MMKV mmkv = MMKV.defaultMMKV();
+  const String key = 'unixconn_mmkv_probe';
+  const String value = 'ready';
+  mmkv.encodeString(key, value);
+
+  runApp(ExampleApp(mmkvProbe: mmkv.decodeString(key) ?? 'missing'));
 }
 
 class ExampleApp extends StatelessWidget {
-  const ExampleApp({super.key});
+  const ExampleApp({required this.mmkvProbe, super.key});
+
+  final String mmkvProbe;
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +53,17 @@ final response = await request.close();
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text('unixconn example')),
-        body: const Padding(
-          padding: EdgeInsets.all(24),
-          child: SelectableText(sample),
+        body: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('MMKV probe: $mmkvProbe'),
+              const SizedBox(height: 16),
+              const Expanded(
+                  child: SingleChildScrollView(child: SelectableText(sample))),
+            ],
+          ),
         ),
       ),
     );

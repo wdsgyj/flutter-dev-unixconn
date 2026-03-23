@@ -206,8 +206,14 @@ final class UnixProxy {
     UnixconnBinding? binding,
     UnixSocketConnector? readinessConnector,
   }) async {
-    final UnixconnBinding resolvedBinding =
-        binding ?? UnixconnBindings.instance;
+    final UnixconnBinding resolvedBinding;
+    if (binding == null) {
+      await UnixconnBindings.ensureInitialized();
+      resolvedBinding = UnixconnBindings.instance;
+    } else {
+      binding.ensureInitialized();
+      resolvedBinding = binding;
+    }
     final UnixSocketConnector resolvedReadinessConnector =
         readinessConnector ?? PlatformUnixSocketConnector();
     ReceivePort? tracePort;

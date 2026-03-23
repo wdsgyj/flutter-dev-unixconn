@@ -17,6 +17,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  mmkv: ^2.4.0
+
   unixconn:
     # When depending on this package from a real application you should use:
     #   unixconn: ^x.y.z
